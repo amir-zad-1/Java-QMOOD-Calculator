@@ -284,4 +284,68 @@ public class SystemObject {
         }
         return sb.toString();
     }
+	public List<MethodObject> getInheritedMethods(ClassObject classObject) {
+		List<MethodObject> allMethodsInSub = classObject.getMethodList();
+		List<MethodObject> methods = new ArrayList<MethodObject>();
+		TypeObject superCType = classObject.getSuperclass();
+		if (classObject.getSuperclass() != null) {
+			ClassObject superCClass = getClassObject(superCType.getClassType());
+			try {
+				methods = superCClass.getMethodList();
+				for (int i = 0; i < methods.size(); i++) {
+					if (allMethodsInSub.contains(methods.get(i))) {
+						methods.remove(i);
+					}
+					if ((methods.get(i).getAccess().toString() != "public")
+							&& (methods.get(i).getAccess().toString() != "protected") && (methods.get(i).isStatic())) {
+						methods.remove(i);
+					}
+				}
+				while (superCClass != null && superCClass.getSuperclass() != null) {
+					if (superCClass != null && superCClass.getSuperclass() != null) {
+						superCType = superCClass.getSuperclass();
+						superCClass = getClassObject(superCType.getClassType());
+						try {
+							methods.addAll(superCClass.getMethodList());
+							for (int i = 0; i < methods.size(); i++) {
+								if (allMethodsInSub.contains(methods.get(i))) {
+									methods.remove(i);
+								}
+								if ((methods.get(i).getAccess().toString() != "public")
+										&& (methods.get(i).getAccess().toString() != "protected")
+										&& (methods.get(i).isStatic())) {
+									methods.remove(i);
+								}
+							}
+						} catch (Exception e) {
+							return Collections.emptyList();
+						}
+					} else {
+						break;
+					}
+				}
+			} catch (Exception e) {
+				return Collections.emptyList();
+			}
+		}
+		return methods;
+	}
+
+	public float computeMFA(ClassObject classObject) {
+		List<MethodObject> methodsDeclaredINCurrentClass = classObject.getMethodList();
+		List<MethodObject> inheritedMethods = getInheritedMethods(classObject);
+		if (inheritedMethods.size() == 0) {
+			return 0.0f;
+		} else if (methodsDeclaredINCurrentClass.size() + inheritedMethods.size() > 0) {
+			return (float) inheritedMethods.size() / (methodsDeclaredINCurrentClass.size() + inheritedMethods.size());
+		} else {
+			return 0.0f;
+		}
+	}
+
+	public ClassObject superCClass(TypeObject superCType, ClassObject superCClass) {
+		superCType = superCClass.getSuperclass();
+		superCClass = getClassObject(superCType.getClassType());
+		return superCClass;
+	}
 }
