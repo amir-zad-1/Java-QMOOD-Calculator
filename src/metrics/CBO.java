@@ -141,7 +141,7 @@ public class CBO {
   }
   
   public String toString2() {
-    return "CBO_Value: "+CBO_Value;
+    return "CBO Value: "+CBO_Value;
   }
   
 }
