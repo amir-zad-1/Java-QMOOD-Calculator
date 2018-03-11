@@ -2,7 +2,7 @@ package view;
 
 import java.lang.reflect.InvocationTargetException;
 
-import metrics.LCOM;
+import metrics.*;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.ICompilationUnit;
