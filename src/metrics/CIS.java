@@ -12,7 +12,7 @@ public class CIS
 {
 	//mahsa ghoreishi
 
-	public int systemValue=0;
+	public double systemValue=0;
 	public CIS(SystemObject system) 
 	{
 		//the number of public methods in all classes
