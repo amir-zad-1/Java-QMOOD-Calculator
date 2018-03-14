@@ -13,63 +13,69 @@ import ast.SystemObject;
 
 public class LCOM {
 	
-	private Map<String, Integer> cohesionMap;
+	private Map<String, Integer> cohesionamountMap;
 
 	public LCOM(SystemObject system) {
-		cohesionMap = new HashMap<String, Integer>();
 		
 		Set<ClassObject> classes = system.getClassObjects();
+		cohesionamountMap = new HashMap<String, Integer>();
+		
+		
 		
 		for(ClassObject classObject : classes) {
-			int cohesion = computeCohesion(classObject);
-			if(cohesion != -1) {
-				cohesionMap.put(classObject.getName(), cohesion);
+			int cohesionamount = computecohesionamount(classObject);
+			if(cohesionamount != -1) {
+				cohesionamountMap.put(classObject.getName(), cohesionamount);
 			}
 		}
 		
 	}
 	
-	private int computeCohesion(ClassObject classObject) {
+	private int computecohesionamount(ClassObject classObject) {
 		
+		
+		int a = 0;
+		int s = 0;
 		List<MethodObject> methods = classObject.getMethodList();
-		int p = 0;
-		int q = 0;
 		
 		if(methods.size() < 2) {
 			return -1;
 		}
 		
-		for(int i=0; i<methods.size()-1; i++) {
-			MethodObject mI = methods.get(i);
-			List<FieldInstructionObject> attributesI = mI.getFieldInstructions();
-			for(int j=i+1; j<methods.size(); j++) {
-				MethodObject mJ = methods.get(j);
-				List<FieldInstructionObject> attributesJ = mJ.getFieldInstructions();
+		for(int l=0; l<methods.size()-1; l++) {
+			MethodObject nL = methods.get(l);
+			List<FieldInstructionObject> attributesL = nL.getFieldInstructions();
+			
+			for(int k=l+1; k<methods.size(); k++) {
+				MethodObject nK = methods.get(k);
+				List<FieldInstructionObject> attributesK = nK.getFieldInstructions();
+				Set<FieldInstructionObject> intersection = commonAttributes(attributesL, attributesK, classObject.getName());
 				
-				Set<FieldInstructionObject> intersection = commonAttributes(attributesI, attributesJ, classObject.getName());
 				if(intersection.isEmpty()) {
-					p++;
+					a++;
 				} else {
-					q++;
+					s++;
 				}
 				
 			}
 		}
 		
-		if (p > q) {
-			return p - q;
+		if (a > s) {
+			return a - s;
 		} else {
 			return 0;
 		}
 	}
 	
-	private Set<FieldInstructionObject> commonAttributes(List<FieldInstructionObject> attributesI,
-			List<FieldInstructionObject> attributesJ, String className) {
+	private Set<FieldInstructionObject> commonAttributes(List<FieldInstructionObject> attributesL,
+			List<FieldInstructionObject> attributesK, String className) {
 		
 		Set<FieldInstructionObject> commonAttributes = new HashSet<FieldInstructionObject>();
-		for (FieldInstructionObject instructionI : attributesI) {
-			if(instructionI.getOwnerClass().equals(className) && attributesJ.contains(instructionI)) {
-				commonAttributes.add(instructionI);
+		
+		for (FieldInstructionObject instructionL : attributesL) {
+			
+			if(instructionL.getOwnerClass().equals(className) && attributesK.contains(instructionL)) {
+				commonAttributes.add(instructionL);
 			}
 		}
 		return commonAttributes;
@@ -78,10 +84,10 @@ public class LCOM {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for(String key : cohesionMap.keySet()) {
-			sb.append(key).append("\t").append(cohesionMap.get(key)).append("\n");
+		StringBuilder strbuilder = new StringBuilder();
+		for(String key : cohesionamountMap.keySet()) {
+			strbuilder.append(key).append("\t").append(cohesionamountMap.get(key)).append("\n");
 		}
-		return sb.toString();
+		return strbuilder.toString();
 	}
 }
