@@ -343,6 +343,19 @@ public class SystemObject {
 		}
 	}
 
+	public float computeMIF(ClassObject classObject) {
+		List<MethodObject> DeclaredMethod = classObject.getMethodList();
+		List<MethodObject> inheritedMethods = getInheritedMethods(classObject); 
+		
+		if(DeclaredMethod.size()>0)
+		{
+			 return (float) inheritedMethods.size() / DeclaredMethod.size();
+		}
+		else
+		{
+			return 0.0f;
+		}
+	}
 	public ClassObject superCClass(TypeObject superCType, ClassObject superCClass) {
 		superCType = superCClass.getSuperclass();
 		superCClass = getClassObject(superCType.getClassType());
