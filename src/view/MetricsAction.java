@@ -107,8 +107,114 @@ public class MetricsAction  implements IObjectActionDelegate {
 							new ASTReader(selectedProject, monitor);
 						}
 						SystemObject system = ASTReader.getSystemObject();
-						LCOM lcom = new LCOM(system);
-						System.out.print(lcom.toString());
+						// LCOM lcom = new LCOM(system);
+						// System.out.print(lcom.toString());
+
+
+            // Create object for the metrices in Metrics folder
+            NOM nom = new NOM(system);
+            CIS cis = new CIS(system);
+            RFC rfc = new RFC(system);
+            WMC wmc = new WMC(system);
+            MIF mif = new MIF(system);
+            NOC noc = new NOC(system);
+            CBO cbo = new CBO(system);
+            DIT dit = new DIT(system);
+            CF cf = new CF(system);
+            AIF aif = new AIF(system);
+            DCC dcc = new DCC(system);
+            DSC dsc = new DSC(system);
+            ANA ana = new ANA(system);
+            NOP nop = new NOP(system);
+            NOH noh = new NOH(system);
+            MFA mfa = new MFA(system);
+            CAMC camc = new CAMC(system);
+
+            String fileName = "values.txt";
+            File file = new File("<ENTER_PATH_WHERE_TO_SAVE_FILE>" + fileName);
+            try {
+              file.createNewFile();
+              System.out.print(file.getAbsolutePath());
+            } catch (IOException e1) {
+              e1.printStackTrace();
+            }
+            
+            try {
+              FileWriter fw = new FileWriter(file,false);
+              
+              String content = "";
+              
+              double extendibilityValue = (0.5*ana.anaValue) - (0.5*dcc.dccValue) + (0.5*mfa.mfaValue) + (0.5*nop.nopValue);
+              double reusabilityValue = -(0.25*dcc.dccValue) + (0.25*camc.camcValue) + (0.5*cis.systemValue) + (0.5*dsc.dscValue);
+              double functionalityValue = (0.12*camc.camcValue) + (0.22*nop.nopValue) + (0.22*cis.systemValue) + (0.22*dsc.dscValue) + (0.22*noh.nohValue);
+              
+              //metrics
+              content +="-----------------External Quality Attributes------------------" + System.getProperty("line.separator");
+              content +="Extendibility: "+extendibilityValue+ System.getProperty("line.separator");
+              content +="Reusability: "+reusabilityValue+ System.getProperty("line.separator");
+              content +="Functionality: "+functionalityValue+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="-----------------Internal Metrics------------------" + System.getProperty("line.separator");
+              
+              content +="*******************CBO********************\n";
+              content +=cbo.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************CF********************\n";
+              content +=cf.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************AIF********************\n";
+              content +=aif.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************MIF********************\n";
+              content +=mif.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************DIT********************\n";
+              content +=dit.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************NOC********************\n";
+              content +=noc.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************RFC********************\n";
+              content +=rfc.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************WMC********************\n";
+              content +=wmc.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************CIS********************\n";
+              content +=cis.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************NOM********************\n";
+              content +=nom.toString2()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************DCC********************\n";
+              content +=dcc.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************DSC********************\n";
+              content +=dsc.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************ANA********************\n";
+              content +=ana.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************NOP********************\n";
+              content +=nop.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************NOH********************\n";
+              content +=noh.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************MFA********************\n";
+              content +=mfa.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              content +="*******************CAMC********************\n";
+              content +=camc.toString()+System.getProperty("line.separator") + System.getProperty("line.separator");
+              
+              fw.write(content);
+              fw.close();
+            } 
+            catch (IOException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
+
 						
 						if(selectedPackageFragmentRoot != null) {
 							// package fragment root selected
