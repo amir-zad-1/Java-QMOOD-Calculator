@@ -34,7 +34,7 @@ public class ANA
 
         for (ClassObject c : classes)
         {
-            ditValue += dit.computeDIT(this.m_sys, c);
+            ditValue += dit.DITCalculation(this.m_sys, c);
         }
 
         this.m_ana = ditValue / classes.size();

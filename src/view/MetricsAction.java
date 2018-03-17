@@ -1,5 +1,8 @@
 package view;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import metrics.*;
@@ -144,7 +147,7 @@ public class MetricsAction  implements IObjectActionDelegate {
               
               String content = "";
               
-              double extendibilityValue = (0.5*ana.anaValue) - (0.5*dcc.dccValue) + (0.5*mfa.mfaValue) + (0.5*nop.nopValue);
+              double extendibilityValue = (0.5*ana.getANA()) - (0.5*dcc.dccValue) + (0.5*mfa.mfaValue) + (0.5*nop.nopValue);
               double reusabilityValue = -(0.25*dcc.dccValue) + (0.25*camc.camcValue) + (0.5*cis.systemValue) + (0.5*dsc.dscValue);
               double functionalityValue = (0.12*camc.camcValue) + (0.22*nop.nopValue) + (0.22*cis.systemValue) + (0.22*dsc.dscValue) + (0.22*noh.nohValue);
               
