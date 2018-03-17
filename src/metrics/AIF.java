@@ -180,5 +180,9 @@ public class AIF
 
         return sb.toString();
     }
+    
+    public String toStringSystemLevel() {
+		return "System Level Value: " + this.m_sysVal;
+	}
 
 }
