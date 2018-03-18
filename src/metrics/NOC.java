@@ -65,7 +65,7 @@ public class NOC {
 	
 	//-------------------------------------------------------------------------------
 	public String toString2() {
-		return "NOC Value is: "+NOC_Value;
+		return " " + NOC_Value;
 	}
 	
 }
