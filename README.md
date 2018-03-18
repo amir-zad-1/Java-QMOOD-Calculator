@@ -12,7 +12,11 @@ Team Members
 9) 40019040 Mofehintoluwa Ogunrinde
 10) 40056928 Mahsa AlSadat Ghoreishi
 
-```sh
-# This is SOEN6611 Project. 
-```
+Installation:
+1. Download/Clone the repository
+2. Import the project to Eclipse
+3. Run the jDeodorant As Eclipse Application which will open a new instance of Eclipse with jDeodorant running in it
+4. Import the project you want to apply metrics in the new instance of eclipse
+5. Right-click on the project and click "Metrics..."
+6. The metrics will be shown in a text file on the filepath written in views.MetricsAction.java.
 
