@@ -64,7 +64,7 @@ public class CF {
 
 
 	public String toString() {
-		return "Sytem_Value: "+CF;
+		return " " + CF;
 	}
 
 
