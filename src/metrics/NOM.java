@@ -36,7 +36,7 @@ public class NOM
   }
   
   public String toString2() {
-    return "NOM Value: "+NOM_Value;
+    return " " + NOM_Value;
   }
 
 }
