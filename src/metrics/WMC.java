@@ -74,7 +74,7 @@ public class WMC {
   }
   
   public String toString2() {
-    return "WMC Value: "+WMC_Value;
+    return " " + WMC_Value;
   }
 
 }
