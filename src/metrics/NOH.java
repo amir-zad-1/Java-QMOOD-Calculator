@@ -20,7 +20,7 @@ public class NOH {
 	}
 	
 	public String toString() {
-		return "NOH Value is: "+getNOH_Value();
+		return " " + getNOH_Value();
 	}
 
 	//------------------------------------------------------------------
