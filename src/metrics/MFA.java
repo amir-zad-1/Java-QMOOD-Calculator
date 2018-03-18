@@ -28,6 +28,6 @@ public class MFA {
 	}
 
 	public String toString() {
-		return "System_Value: "+mfaValue;
+		return " " + mfaValue;
 	}
 }
