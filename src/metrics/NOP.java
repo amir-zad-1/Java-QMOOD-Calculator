@@ -35,7 +35,7 @@ public class NOP {
   @Override
   public String toString() 
   {
-    return "NOP Value: "+NOP_Value;
+    return " " + NOP_Value;
   }
   
 }
