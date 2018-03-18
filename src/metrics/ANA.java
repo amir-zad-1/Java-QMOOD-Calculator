@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class ANA
 {
-	private double m_ana;
+	private double anaValue;
     private SystemObject m_sys;
 
     /**
@@ -15,7 +15,7 @@ public class ANA
      */
 	public ANA(SystemObject sys)
     {
-		this.m_ana = 0.0f;
+		this.anaValue = 0.0f;
 		this.m_sys = sys;
 
 		//calculate ANA
@@ -37,7 +37,7 @@ public class ANA
             ditValue += dit.DITCalculation(this.m_sys, c);
         }
 
-        this.m_ana = ditValue / classes.size();
+        this.anaValue = ditValue / classes.size();
 
     }
 	
@@ -47,7 +47,7 @@ public class ANA
 	 */
 	public double getANA()
     {
-        return this.m_ana;
+        return this.anaValue;
     }
 
     /**
@@ -56,18 +56,7 @@ public class ANA
      */
 	public String toString()
 	{
-	    StringBuilder sb = new StringBuilder();
-
-        sb.append("==========");
-        sb.append("ANA");
-        sb.append("\n");
-
-        sb.append("System Level ANA = ");
-        sb.append(this.m_ana);
-        sb.append("\n");
-        sb.append("==========");
-
-        return sb.toString();
+        return " "+anaValue;
 	}
 
 }

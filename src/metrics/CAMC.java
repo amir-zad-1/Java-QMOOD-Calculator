@@ -9,16 +9,16 @@ import ast.SystemObject;
 
 
 public class CAMC {
-	public float CAMC_Value;
+	public float camcValue;
 
 	public CAMC(SystemObject system){
 		Set<ClassObject> classes = system.getClassObjects();
 		
 			
 		for(ClassObject classObject : classes){
-			CAMC_Value += computeCAMC(system,classObject);
+			camcValue += computeCAMC(system,classObject);
 		}
-		CAMC_Value = CAMC_Value/classes.size();
+		camcValue = camcValue/classes.size();
 		
 	}
 
@@ -56,7 +56,7 @@ public class CAMC {
 	}
 	
 	public String toString() {
-		return " " + CAMC_Value;
+		return " " + camcValue;
 	}
 	
 }

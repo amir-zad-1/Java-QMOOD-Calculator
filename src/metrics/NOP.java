@@ -8,13 +8,13 @@ import ast.MethodObject;
 import ast.SystemObject;
 
 public class NOP { 
-  public int NOP_Value;
+  public int nopValue;
   
   public NOP(SystemObject system) {
     Set<ClassObject> classes = system.getClassObjects();
     
     for(ClassObject classObj : classes) {
-      NOP_Value += computeNOP(system, classObj);
+    	nopValue += computeNOP(system, classObj);
     }
   }
 
@@ -35,7 +35,7 @@ public class NOP {
   @Override
   public String toString() 
   {
-    return " " + NOP_Value;
+    return " " + nopValue;
   }
   
 }

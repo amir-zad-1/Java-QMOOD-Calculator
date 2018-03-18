@@ -8,15 +8,15 @@ import ast.inheritance.InheritanceDetection;
 public class NOH {
 	
 	//------------------------------------------------------------------
-	public int NOH_Value;
+	public int nohValue;
 
 	
 	public int getNOH_Value() {
-		return NOH_Value;
+		return nohValue;
 	}
 
 	public void setNOH_Value(int nOH_Value) {
-		NOH_Value = nOH_Value;
+		nohValue = nOH_Value;
 	}
 	
 	public String toString() {
@@ -30,7 +30,7 @@ public class NOH {
 		//the Set interface defines the set that does not allow duplicate elements
 		Set<String> inheritanceCount = inheritanceDetection.getRoots();
 		
-		NOH_Value = inheritanceCount.size();
+		nohValue = inheritanceCount.size();
 	}
 	
 	//------------------------------------------------------------------
