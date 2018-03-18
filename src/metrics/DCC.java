@@ -58,7 +58,7 @@ public class DCC {
 	@Override
 	public String toString() 
 	{
-		return "System_Value: "+dccValue;
+		return " " + dccValue;
 	}
 	
 }
