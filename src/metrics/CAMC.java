@@ -56,7 +56,7 @@ public class CAMC {
 	}
 	
 	public String toString() {
-		return "CAMC Value: "+CAMC_Value;
+		return " " + CAMC_Value;
 	}
 	
 }
