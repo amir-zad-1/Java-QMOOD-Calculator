@@ -2,6 +2,7 @@ package ast;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -342,7 +343,6 @@ public class SystemObject {
 			return 0.0f;
 		}
 	}
-
 	public float computeMIF(ClassObject classObject) {
 		List<MethodObject> DeclaredMethod = classObject.getMethodList();
 		List<MethodObject> inheritedMethods = getInheritedMethods(classObject); 
@@ -356,9 +356,11 @@ public class SystemObject {
 			return 0.0f;
 		}
 	}
+
 	public ClassObject superCClass(TypeObject superCType, ClassObject superCClass) {
 		superCType = superCClass.getSuperclass();
 		superCClass = getClassObject(superCType.getClassType());
 		return superCClass;
 	}
+
 }
