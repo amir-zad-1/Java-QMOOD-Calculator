@@ -1,6 +1,8 @@
 package metrics;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import ast.ClassObject;
@@ -10,13 +12,16 @@ import ast.SystemObject;
 
 public class CAMC {
 	public float camcValue;
+	private Map<String, Float> classMap = new HashMap<String, Float>();//SMYH
 
 	public CAMC(SystemObject system){
 		Set<ClassObject> classes = system.getClassObjects();
 		
 			
 		for(ClassObject classObject : classes){
-			camcValue += computeCAMC(system,classObject);
+			float CAMC = computeCAMC(system,classObject);;
+			camcValue += CAMC; 
+			classMap.put(classObject.getName(), CAMC);//SMYH
 		}
 		camcValue = camcValue/classes.size();
 		
@@ -57,6 +62,14 @@ public class CAMC {
 	
 	public String toString() {
 		return " " + camcValue;
+	}
+	public String toString2() //SMYH
+	{
+		StringBuilder sb = new StringBuilder();
+		for (String key : classMap.keySet()) {
+			sb.append(key).append("\t").append(classMap.get(key)).append("\n");
+		}
+		return sb.toString();
 	}
 	
 }
