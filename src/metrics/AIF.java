@@ -181,8 +181,18 @@ public class AIF
         return sb.toString();
     }
     
+    /**
+     * 
+     * @return
+     */
     public String toStringSystemLevel() {
 		return " " + this.m_sysVal;
 	}
+    
+    /**
+     * 
+     * @return
+     */
+    public String toString2() { return this.toStringSystemLevel(); }
 
 }
