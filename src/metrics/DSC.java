@@ -12,7 +12,7 @@ public class DSC {
 	@Override
 	public String toString() 
 	{
-		return "System_Value: "+dscamount;
+		return " " + dscamount;
 	}
 	
 }
