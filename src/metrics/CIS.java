@@ -50,7 +50,7 @@ public class CIS
 	
 
 	public String toString2() {
-		return "System_Value: "+systemValue;
+		return " " + systemValue;
 	}
 
 }
