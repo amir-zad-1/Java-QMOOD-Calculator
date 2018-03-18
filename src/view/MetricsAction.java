@@ -148,7 +148,7 @@ public class MetricsAction  implements IObjectActionDelegate {
 						CAMC camc = new CAMC(system);
 						
 						String fileName = "metrics.txt";
-						File file = new File("D:\\"+fileName);
+						File file = new File("G:\\"+fileName);
 						try {
 							file.createNewFile();
 							System.out.print(file.getAbsolutePath());
@@ -173,37 +173,69 @@ public class MetricsAction  implements IObjectActionDelegate {
 
 							content +="CAMC: "+camc.toString()+"\n\n";
 							
+							
+							content +="---------------------------------------------------\n\n";
+							
 							content +="AIF: "+aif.toStringSystemLevel()+"\n\n";
 							
+							content +="---------------------------------------------------\n\n";
+							
 							content +="MIF: "+mif.toString2()+"\n\n";
+							content +="Classes_MIF: "+mif.toString()+"\n\n";
+							
+							content +="---------------------------------------------------\n\n";
 							
 							content +="DIT: "+dit.toString2()+"\n\n";
+							content +="Classes_DIT: "+dit.toString()+"\n\n";
+							
+							content +="---------------------------------------------------\n\n";
 							
 							content +="NOC: "+noc.toString2()+"\n\n";
+							content +="Classes_NOC: "+noc.toString()+"\n\n";
+							
+							content +="---------------------------------------------------\n\n";
 							
 							content +="RFC: "+rfc.toString2()+"\n\n";
+							content +="Classes_RFC: "+rfc.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
 							content +="CBO: "+cbo.toString2()+"\n\n";
+							content +="Classes_CBO: "+cbo.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
 							content +="CF: "+cf.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 
 							content +="DCC: "+dcc.toString()+"\n\n";
 							
+							content +="---------------------------------------------------\n\n";
+							
 							content +="DSC: "+dsc.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 
 							content +="WMC: "+wmc.toString2()+"\n\n";
+							content +="Classes_WMC: "+wmc.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
 							content +="CIS: "+cis.toString2()+"\n\n";
+							content +="Classes_CIS: "+cis.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
-							content +="NOM: "+nom.toString2()+"\n\n";							
+							content +="NOM: "+nom.toString2()+"\n\n";
+							content +="Classes_NOM: "+nom.toString()+"\n\n";	
+							content +="---------------------------------------------------\n\n";
 							
 							content +="ANA: "+ana.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
 							content +="NOP: "+nop.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
 							content +="NOH: "+noh.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 							
 							content +="MFA: "+mfa.toString()+"\n\n";
+							content +="---------------------------------------------------\n\n";
 
 							content +="-----------------Quality Attributes------------------\n\n";
 							content +="Reusability: "+reusabilityValue+"\n\n";
