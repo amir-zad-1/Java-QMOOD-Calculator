@@ -42,6 +42,6 @@ public class MIF {
 	}
 	
 	public String toString2() {
-		return "System_Value: "+mifValue;
+		return " " + mifValue;
 	}
 }
