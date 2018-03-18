@@ -84,7 +84,7 @@ public class RFC
   }
   
   public String toString2() {
-    return "RFC Value: "+RFC_Value;
+    return " " + RFC_Value;
   }
 
 }
