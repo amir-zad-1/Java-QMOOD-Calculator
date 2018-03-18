@@ -2,12 +2,15 @@ package metrics;
 
 import ast.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class ANA
 {
 	private double anaValue;
     private SystemObject m_sys;
+    private Map<String, Integer> classMap = new HashMap<String, Integer>();//SMYH
 
     /**
      *
@@ -28,13 +31,16 @@ public class ANA
 	 */
 	private void calcAna()
     {
+		
         Set<ClassObject> classes = this.m_sys.getClassObjects();
         DIT dit = new DIT(this.m_sys);
         float ditValue = 0.0f;
 
         for (ClassObject c : classes)
         {
-            ditValue += dit.DITCalculation(this.m_sys, c);
+        	int DITCount = dit.DITCalculation(this.m_sys, c);
+            ditValue += DITCount;
+            classMap.put(c.getName(), DITCount);//SMYH
         }
 
         this.anaValue = ditValue / classes.size();
@@ -57,6 +63,14 @@ public class ANA
 	public String toString()
 	{
         return " "+anaValue;
+	}
+	public String toString2() //SMYH
+	{
+		StringBuilder sb = new StringBuilder();
+		for (String key : classMap.keySet()) {
+			sb.append(key).append("\t").append(classMap.get(key)).append("\n");
+		}
+		return sb.toString();
 	}
 
 }
