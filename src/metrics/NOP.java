@@ -1,6 +1,8 @@
 package metrics;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import ast.ClassObject;
@@ -9,12 +11,17 @@ import ast.SystemObject;
 
 public class NOP { 
   public int nopValue;
+  private Map<String, Integer> classMap = new HashMap<String, Integer>();//SMYH
   
   public NOP(SystemObject system) {
     Set<ClassObject> classes = system.getClassObjects();
     
     for(ClassObject classObj : classes) {
-    	nopValue += computeNOP(system, classObj);
+    	
+    	int NOPCount = computeNOP(system, classObj);
+    	nopValue += NOPCount;
+    	
+    	classMap.put(classObj.getName(), NOPCount);//SMYH
     }
   }
 
@@ -37,5 +44,12 @@ public class NOP {
   {
     return " " + nopValue;
   }
-  
+  public String toString2() //SMYH
+	{
+		StringBuilder sb = new StringBuilder();
+		for (String key : classMap.keySet()) {
+			sb.append(key).append("\t").append(classMap.get(key)).append("\n");
+		}
+		return sb.toString();
+	} 
 }
