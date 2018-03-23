@@ -349,7 +349,7 @@ public class SystemObject {
 		
 		if(DeclaredMethod.size()>0)
 		{
-			 return (float) inheritedMethods.size() / DeclaredMethod.size();
+			 return (float) inheritedMethods.size() / (DeclaredMethod.size()+ inheritedMethods.size());
 		}
 		else
 		{
