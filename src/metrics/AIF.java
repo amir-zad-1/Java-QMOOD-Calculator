@@ -3,6 +3,23 @@ package metrics;
 import ast.*;
 import java.util.*;
 
+
+/**
+ * Attribute Hiding Factor
+ * A = Number of attributes inherited in a class
+ * B = A(c) + Number of attributes declared in a class
+ * Nom, Denom = 0.0
+ * for class in class_diagram
+ *     Nom += A(class)
+ * 
+ *  for class in class_diagram
+ *      Denom += B(class)
+ * 
+ * AIF = A / (A+B)
+ *      
+ * @author amir
+ *
+ */
 public class AIF
 {
     private float m_sysVal;
