@@ -22,7 +22,7 @@ import java.util.*;
  */
 public class AIF
 {
-    private float m_sysVal;
+    private double m_sysVal;
     private Map<String, Float> m_classAif;
     private SystemObject m_sys;
 
@@ -37,32 +37,32 @@ public class AIF
         Set<ClassObject> classes = sys.getClassObjects();
 
         // Step 1
-        this.calcAif(classes);
+        this.calcAIF(classes);
     }
 
     /**
      *
      * @param classes
      */
-    private void calcAif(Set<ClassObject> classes)
+    private void calcAIF(Set<ClassObject> classes)
     {
+    	float result = 0.0f;
+    	float nom = 0 , denom = 0;
+    	
+    	 for(ClassObject c : classes)
+         {
+             if(c.isInterface() == false)
+             {
+            	 List<FieldObject> myAttrs = c.getFieldList();
+                 List<FieldObject> inheritedAttrs = getInheritedAttrs(c, myAttrs);
 
-        for(ClassObject c : classes)
-        {
-            if(c.isInterface())
-            {
-                this.m_classAif.put(c.getName(), 0.0f);
-            }
-            else
-            {
-                float aif = this.computeAIF(c);
-
-                this.m_classAif.put(c.getName(), aif);
-                this.m_sysVal += aif;
-            }
-        }
-
-        m_sysVal = m_sysVal / classes.size();
+            	 nom += inheritedAttrs.size() * 1.0f;
+            	 denom += myAttrs.size() * 1.0f;
+            	 
+             }
+         }
+    	denom += nom;
+    	this.m_sysVal = nom / denom;
     }
 
 
@@ -70,7 +70,7 @@ public class AIF
      *
      * @return
      */
-    public float getSystemLevelValue()
+    public double getSystemLevelValue()
     {
         return this.m_sysVal;
     }
@@ -169,35 +169,7 @@ public class AIF
         }
     }
 
-    /**
-     *
-     * @return
-     */
-    public String toString()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("==========");
-        sb.append("AIF");
-        sb.append("\n");
-
-        for (String k : m_classAif.keySet())
-        {
-            sb.append(k);
-            sb.append(" : ");
-            sb.append(this.m_classAif.get(k));
-            sb.append("\n");
-        }
-
-        sb.append("System Level AIF = ");
-        sb.append(this.m_sysVal);
-        sb.append("\n");
-        sb.append("==========");
-
-
-        return sb.toString();
-    }
-    
+     
     /**
      * 
      * @return
@@ -206,10 +178,5 @@ public class AIF
 		return " " + this.m_sysVal;
 	}
     
-    /**
-     * 
-     * @return
-     */
-    public String toString2() { return this.toStringSystemLevel(); }
-
+   
 }
