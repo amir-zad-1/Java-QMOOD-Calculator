@@ -45,7 +45,7 @@ import ast.ASTReader;
 import ast.CompilationUnitCache;
 import ast.SystemObject;
 
-public class MetricsAction  implements IObjectActionDelegate {
+public class MetricsAction implements IObjectActionDelegate {
 	
 	private ISelection selection;
 	
@@ -119,12 +119,14 @@ public class MetricsAction  implements IObjectActionDelegate {
 				IProgressService ps = wb.getProgressService();
 				ps.busyCursorWhile(new IRunnableWithProgress() {
 					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						
 						if(ASTReader.getSystemObject() != null && selectedProject.equals(ASTReader.getExaminedProject())) {
 							new ASTReader(selectedProject, ASTReader.getSystemObject(), monitor);
 						}
 						else {
 							new ASTReader(selectedProject, monitor);
 						}
+						
 						SystemObject system = ASTReader.getSystemObject();
 						
 						//objects initialization for metrics classes
@@ -147,8 +149,8 @@ public class MetricsAction  implements IObjectActionDelegate {
 						MFA mfa = new MFA(system);
 						CAMC camc = new CAMC(system);
 						
-						String fileName = "metrics.txt";
-						File file = new File("G:\\"+fileName);
+						String fileName = "metrics_6611.txt";
+						File file = new File("/home/amir/Desktop/"+fileName);
 						try {
 							file.createNewFile();
 							System.out.print(file.getAbsolutePath());

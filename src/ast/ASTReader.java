@@ -115,6 +115,7 @@ public class ASTReader {
 	}
 
 	public static int getNumberOfCompilationUnits(IJavaProject iJavaProject) {
+		
 		int numberOfCompilationUnits = 0;
 		try {
 			IPackageFragmentRoot[] iPackageFragmentRoots = iJavaProject.getPackageFragmentRoots();
@@ -329,7 +330,7 @@ public class ASTReader {
 	}
 
     public static SystemObject getSystemObject() {
-		return systemObject;
+    	return systemObject;
 	}
 
 	public static IJavaProject getExaminedProject() {

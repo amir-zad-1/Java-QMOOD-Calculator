@@ -25,7 +25,7 @@
          <action
                class="view.MetricsAction"
                id="view.MetricsAction"
-               label="Metrics...">
+               label="Metrics6611...">
          </action>
       </objectContribution>
    </extension>
