@@ -172,8 +172,7 @@ public class MetricsAction  implements IObjectActionDelegate {
 							content +="-----------------Internal Metrics------------------\n\n";
 
 							content +="CAMC: "+camc.toString()+"\n\n";
-							
-							
+							content +="Classes_CAMC: "+camc.toString2()+"\n\n";
 							content +="---------------------------------------------------\n\n";
 							
 							content +="AIF: "+aif.toStringSystemLevel()+"\n\n";
@@ -207,7 +206,7 @@ public class MetricsAction  implements IObjectActionDelegate {
 							content +="---------------------------------------------------\n\n";
 
 							content +="DCC: "+dcc.toString()+"\n\n";
-							
+							content +="Classes_DCC: "+dcc.toString2()+"\n\n";
 							content +="---------------------------------------------------\n\n";
 							
 							content +="DSC: "+dsc.toString()+"\n\n";
@@ -226,15 +225,18 @@ public class MetricsAction  implements IObjectActionDelegate {
 							content +="---------------------------------------------------\n\n";
 							
 							content +="ANA: "+ana.toString()+"\n\n";
+							content +="Classes_ANA: "+ana.toString2()+"\n\n";
 							content +="---------------------------------------------------\n\n";
 							
 							content +="NOP: "+nop.toString()+"\n\n";
+							content +="Classes_NOP: "+nop.toString2()+"\n\n";
 							content +="---------------------------------------------------\n\n";
 							
 							content +="NOH: "+noh.toString()+"\n\n";
 							content +="---------------------------------------------------\n\n";
 							
 							content +="MFA: "+mfa.toString()+"\n\n";
+							content +="Classes_MFA: "+mfa.toString2()+"\n\n";
 							content +="---------------------------------------------------\n\n";
 
 							content +="-----------------Quality Attributes------------------\n\n";
